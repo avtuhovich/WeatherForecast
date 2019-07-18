@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#aba6a8</color>
+    <color name="colorPrimaryDark">#aba6a8</color>
+    <color name="colorAccent">#aba6a8</color>
+    <color name="colorScreenBackground">#aba6a8</color>
+    <color name="colorTextPrimary">#FFFFFF</color>
+    <color name="colorTextSecondary">#FFFFFF</color>
+    <color name="tab_indicator">#f4f6f5</color>
+
+    <color name="color_thunderstroms">#28313a</color>
+    <color name="color_clear_and_sunny">#4b5e6c</color>
+    <color name="color_partly_cloudy">#757c84</color>
+    <color name="color_gusty_winds">#878181</color>
+    <color name="color_hail_stroms">#798486</color>
+    <color name="color_snow">#b4b1bc</color>
+    <color name="color_mix_snow_and_rain">#5a545e</color>
+    <color name="color_cloudy_overnight">#2c3837</color>
+    <color name="color_heavy_rain">#aba6a8</color>
+</resources>
