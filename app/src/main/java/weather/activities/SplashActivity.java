@@ -109,7 +109,7 @@ public class SplashActivity extends AppCompatActivity {
 
 
     /**
-     * Переопределение методов
+     * Инициализация переменных интерфейса
      */
     private void initMembers() {
         builder = new AlertDialog.Builder(SplashActivity.this);

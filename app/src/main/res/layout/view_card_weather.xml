@@ -32,8 +32,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="75dp"
-                    android:text="Android Name"
+                    android:layout_marginStart="75dp"
+                    android:text="@string/android_name"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="#ffffff"
                     android:textSize="16sp"
@@ -45,7 +45,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
 
-                    android:text="Android Version"
+                    android:text="@string/version"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="#ffffff"
                     android:textSize="@dimen/shorttextsize" />
@@ -56,8 +56,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
-
-                    android:text="Android Version"
+                    android:text="@string/version"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="#ffffff"
                     android:textSize="@dimen/shorttextsize" />
@@ -69,7 +68,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="4dp"
 
-                    android:text="Android Version"
+                    android:text="@string/version"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="#ffffff"
                     android:textSize="@dimen/shorttextsize" />
@@ -81,7 +80,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="4dp"
 
-                    android:text="Android Version"
+                    android:text="@string/version"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="#ffffff"
                     android:textSize="@dimen/shorttextsize" />
@@ -94,8 +93,8 @@
                 android:layout_height="60dp"
                 android:layout_alignParentEnd="true"
                 android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:tag="image_tag" />
+                android:tag="image_tag"
+                android:contentDescription="@string/todo" />
 
             <TextView
                 android:id="@+id/temp"
@@ -107,7 +106,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="11dp"
-                android:text="Android Version"
+                android:text="@string/version"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="#ffffff"
                 android:textSize="16sp" />

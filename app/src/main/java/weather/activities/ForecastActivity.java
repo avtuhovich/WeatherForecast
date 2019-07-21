@@ -153,28 +153,34 @@ public class ForecastActivity extends AppCompatActivity {
 
     /**
      * Возврат текущего местоположения устройства для вызова API погоды
+     * LocationListener - (интерфейс) регламентирует обработку приложение событий службы определения местоположения Android
      */
     private void detectLocation() {
         LocationListener locationListener = new LocationListener() {
+            // изменение местоположения
             @Override
             public void onLocationChanged(Location location) {
                 latitute = location.getLatitude();
                 longitude = location.getLongitude();
             }
 
+            //изменение состояния данных  GPS о местоположении
             @Override
             public void onStatusChanged(String s, int i, Bundle bundle) {
 
             }
 
+            //получение доступа к данным GPS о местоположении
             @Override
             public void onProviderEnabled(String s) {
 
             }
 
+            //потеря доступа к данным GPS о местположении
+            //Toast - всплывающие уведомление
             @Override
             public void onProviderDisabled(String s) {
-                Toast.makeText(ForecastActivity.this, "Connect to network", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ForecastActivity.this, "Подключение к сети", Toast.LENGTH_SHORT).show();
             }
         };
 
@@ -196,11 +202,8 @@ public class ForecastActivity extends AppCompatActivity {
                 Address locationAddress = addressList.get(0);
                 for (int i = 0; i <= locationAddress.getMaxAddressLineIndex(); i++) {
                     locationAddress.getAddressLine(i);
-                    /*remove comment if you subLocality need to be shown*/
-                    // addressStringBuilder.append(locationAddress.getSubLocality()).append(",");
                     addressStringBuilder.append(locationAddress.getLocality());
                 }
-                /*TODO Set the current location to display*/
             }
         } catch (Exception e) {
             Log.e(TAG, "Exception: " + e.getMessage());
@@ -209,9 +212,8 @@ public class ForecastActivity extends AppCompatActivity {
 
 
     /**
-     * This method call the getWeather api to searched the weather
-     *
-     * @param cityName
+     * Вызов API GetWeather для поиска погоды
+     * cityName - название города
      */
     private void fetchUpdateOnSearched(String cityName) {
         StringBuilder stringBuilder = new StringBuilder();
@@ -219,10 +221,8 @@ public class ForecastActivity extends AppCompatActivity {
         getWeather(stringBuilder);
     }
     /**
-     * This method get the Date
-     *
-     * @param milliTime
-     * @return
+     * Получение даты
+     * milliTime - время в миллисекундах
      */
     private String getDate(Long milliTime) {
         Date currentDate = new Date(milliTime);
@@ -232,19 +232,16 @@ public class ForecastActivity extends AppCompatActivity {
     }
 
     /**
-     * This method call the openwheathermap api by city name and onResponseSuccess bind the data
-     * with associated model and set the data to show awesome view to user.
-     *
-     * @param addressStringBuilder
-     */
+     * Вызов api openwheathermap по названию города
+     * addressStringBuilder
+    */
     private void getWeather(StringBuilder addressStringBuilder) {
-        progressDialog.show();
         Call<Forecast> call = Utility.getApis().getWeatherForecastData(addressStringBuilder, Constants.API_KEY, Constants.UNITS);
         call.enqueue(new Callback<Forecast>() {
+            //onResponse - привязка данных
             @Override
             public void onResponse(Call<Forecast> call, Response<Forecast> response) {
-                progressDialog.dismiss();
-                if (response.isSuccessful()) {
+                if (response.isSuccessful() == true) {
                     Log.i(TAG, "onResponse: " + response.isSuccessful());
                     weatherList = response.body().getDataObjectList();
                     distinctDays = new LinkedHashSet<>();
@@ -277,7 +274,7 @@ public class ForecastActivity extends AppCompatActivity {
                     cardAdapter2 = new CardAdapter(daysList.get(1));
                     recyclerViewTomorrow.setAdapter(cardAdapter2);
 
-                    cardAdapter3 = new CardAdapter(daysList.get(daysList.size() - 4));
+                    cardAdapter3 = new CardAdapter(daysList.get(2));
                     recyclerViewLater.setAdapter(cardAdapter3);
 
                     toolbar.setTitle(response.body().getCity().getName() + ", " + response.body().getCity().getCountry());
@@ -376,15 +373,15 @@ public class ForecastActivity extends AppCompatActivity {
                     }
                     tvTodayTemperature.setText(weatherList.get(0).getMain().getTemp() + " " + getString(R.string.temp_unit));
                     tvTodayDescription.setText(weatherList.get(0).getWeather().get(0).getDescription());
-                    tvTodayWind.setText(getString(R.string.wind_lable) + " " + weatherList.get(0).getWind().getSpeed() + " " + getString(R.string.wind_unit));
-                    tvTodayPressure.setText(getString(R.string.pressure_lable) + " " + weatherList.get(0).getMain().getPressure() + " " + getString(R.string.pressure_unit));
-                    tvTodayHumidity.setText(getString(R.string.humidity_lable) + " " + weatherList.get(0).getMain().getHumidity() + " " + getString(R.string.humidity_unit));
+                    tvTodayWind.setText(getString(R.string.wind_lable) + " " + weatherList.get(0).getWind().getSpeed() + " " + getString(R.string.wind));
+                    tvTodayPressure.setText(getString(R.string.pressure_lable) + " " + weatherList.get(0).getMain().getPressure() + " " + getString(R.string.pressure));
+                    tvTodayHumidity.setText(getString(R.string.humidity_lable) + " " + weatherList.get(0).getMain().getHumidity() + " " + getString(R.string.humidity));
                 }
             }
 
+            // задает обратный вызов, который вызывается после неудачного выполнения запроса.
             @Override
             public void onFailure(Call<Forecast> call, Throwable t) {
-                progressDialog.dismiss();
                 Log.e(TAG, "onFailure: " + t.getMessage());
                 Toast.makeText(ForecastActivity.this, getString(R.string.msg_failed), Toast.LENGTH_SHORT).show();
             }
@@ -392,8 +389,8 @@ public class ForecastActivity extends AppCompatActivity {
     }
 
     /**
-     * This method initialize the all ui member variables
-     */
+     * Инициализация переменных пользовательского интерфейса
+     * */
     private void initUi() {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage(getString(R.string.progress));
@@ -408,9 +405,8 @@ public class ForecastActivity extends AppCompatActivity {
 
         layout = findViewById(R.id.layoutWeather);
     }
-
     /**
-     * This method initialize the all member variables
+     * Инициализация переменных интерфейса
      */
     private void initMember() {
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);

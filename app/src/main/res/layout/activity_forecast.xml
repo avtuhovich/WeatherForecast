@@ -16,7 +16,8 @@
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleTextColor="@color/colorTextSecondary" />
+        app:titleTextColor="@color/colorTextSecondary"
+        tools:ignore="MissingConstraints" />
 
     <RelativeLayout
         android:id="@+id/titleLL"
@@ -30,51 +31,52 @@
             android:id="@+id/todayTemperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="0 °C"
+            android:layout_marginStart="5dp"
+            android:text="@string/C"
             android:textColor="@color/colorTextPrimary"
-            android:textSize="36dp" />
+            android:textSize="36sp"
+            tools:ignore="RelativeOverlap" />
 
         <TextView
             android:id="@+id/todayDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/todayTemperature"
-            android:layout_marginLeft="5dp"
-            android:text="No data"
+            android:layout_marginStart="5dp"
+            android:text="@string/description"
             android:textColor="@color/colorTextPrimary"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/todayWind"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/todayDescription"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="8dp"
-            android:text="Wind: 0 m/s"
+            android:text="@string/wind"
             android:textColor="@color/colorTextPrimary"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/todayPressure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/todayWind"
-            android:layout_marginLeft="5dp"
-            android:text="Pressure: 0 hpa"
+            android:layout_marginStart="5dp"
+            android:text="@string/pressure"
             android:textColor="@color/colorTextPrimary"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/todayHumidity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/todayPressure"
-            android:layout_marginLeft="5dp"
-            android:text="Humidity: 0 %"
+            android:layout_marginStart="5dp"
+            android:text="@string/humidity"
             android:textColor="@color/colorTextPrimary"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/imageViewWeather"
@@ -114,7 +116,7 @@
             <TabWidget
                 android:id="@android:id/tabs"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></TabWidget>
+                android:layout_height="wrap_content" />
 
             <FrameLayout
                 android:id="@android:id/tabcontent"
