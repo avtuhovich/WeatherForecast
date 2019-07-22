@@ -210,16 +210,6 @@ public class ForecastActivity extends AppCompatActivity {
         }
     }
 
-
-    /**
-     * Вызов API GetWeather для поиска погоды
-     * cityName - название города
-     */
-    private void fetchUpdateOnSearched(String cityName) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(cityName);
-        getWeather(stringBuilder);
-    }
     /**
      * Получение даты
      * milliTime - время в миллисекундах

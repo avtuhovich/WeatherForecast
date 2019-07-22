@@ -4,6 +4,7 @@ package weather.models;
  * id - ID города
  * name - название города
  * timezone - сдвиг в секундах от UTC
+ * country - название страны
  */
 
 public class City {
